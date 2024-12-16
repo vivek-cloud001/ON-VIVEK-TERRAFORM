@@ -20,7 +20,7 @@ module "vpc" {
 
 # Create IAM roles for EKS
 module "eks_iam" {
-  source  = "terraform-aws-modules/iam/aws//modules/eks"
+  source  = "terraform-aws-modules/iam/aws/modules/eks"
   version = "~> 5.16"
 
   cluster_name = "my-eks-cluster"

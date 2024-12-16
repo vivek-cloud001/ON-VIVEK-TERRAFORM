@@ -45,7 +45,7 @@ module "eks" {
       min_capacity     = 1
 
       instance_types = ["t3.medium"]
-      key_name       = "my-key-pair" # Replace with your EC2 key pair name
+      key_name       = "oregon-key" # Replace with your EC2 key pair name
     }
   }
 }

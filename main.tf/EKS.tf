@@ -19,11 +19,14 @@ module "vpc" {
 }
 
 # Create IAM roles for EKS
-module "eks_iam" {
-  source  = "terraform-aws-modules/iam/aws/modules/eks"
-  version = "~> 5.16"
+module "iam_eks_role" {
+  source = "terraform-aws-modules/iam/aws//modules/iam-eks-role"
 
-  cluster_name = "my-eks-cluster"
+  role_name = "my-app"
+
+  cluster_service_accounts = {
+    "cluster1" = ["default:my-serviceaccount"]
+  }
 }
 
 # Create an EKS cluster

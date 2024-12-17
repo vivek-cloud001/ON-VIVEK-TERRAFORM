@@ -81,9 +81,9 @@ resource "aws_autoscaling_group" "three-tier-web-asg" {
 ###### Create a launch configuration for the EC2 instances #####
 resource "aws_launch_configuration" "three-tier-web-lconfig" {
   name_prefix                 = "three-tier-web-lconfig"
-  image_id                    = "ami-0b3a4110c36b9a5f0"
+  image_id                    = "ami-0995922d49dc9a17d"
   instance_type               = "t2.micro"
-  key_name                    = "three-tier-web-asg-kp"
+  key_name                    = "three-key"
   security_groups             = [aws_security_group.three-tier-ec2-asg-sg.id]
   user_data                   = <<-EOF
                                 #!/bin/bash
@@ -114,9 +114,9 @@ resource "aws_autoscaling_group" "three-tier-app-asg" {
 # Create a launch configuration for the EC2 instances
 resource "aws_launch_configuration" "three-tier-app-lconfig" {
   name_prefix                 = "three-tier-app-lconfig"
-  image_id                    = "ami-0b3a4110c36b9a5f0"
+  image_id                    = "ami-0995922d49dc9a17d"
   instance_type               = "t2.micro"
-  key_name                    = "three-tier-app-asg-kp"
+  key_name                    = "three-key"
   security_groups             = [aws_security_group.three-tier-ec2-asg-sg-app.id]
   user_data                   = <<-EOF
                                 #!/bin/bash
@@ -146,7 +146,7 @@ resource "aws_db_instance" "three-tier-db" {
   instance_class              = "db.t2.micro"
   identifier                  = "three-tier-db"
   username                    = "admin"
-  password                    = "23vS5TdDW8*o"
+  password                    = "password"
   parameter_group_name        = "default.mysql8.0"
   db_subnet_group_name        = aws_db_subnet_group.three-tier-db-sub-grp.name
   vpc_security_group_ids      = ["${aws_security_group.three-tier-db-sg.id}"]

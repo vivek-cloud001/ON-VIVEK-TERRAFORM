@@ -81,7 +81,7 @@ resource "aws_autoscaling_group" "three-tier-web-asg" {
 ###### Create a launch configuration for the EC2 instances #####
 resource "aws_launch_configuration" "three-tier-web-lconfig" {
   name_prefix                 = "three-tier-web-lconfig"
-  image_id                    = "ami-0995922d49dc9a17d"
+  image_id                    = "ami-06650ca7ed78ff6fa"
   instance_type               = "t2.micro"
   key_name                    = "three-key"
   security_groups             = [aws_security_group.three-tier-ec2-asg-sg.id]
@@ -91,7 +91,7 @@ resource "aws_launch_configuration" "three-tier-web-lconfig" {
                                 sudo yum -y install httpd
                                 sudo systemctl start httpd.service
                                 sudo systemctl enable httpd.service
-                                echo "<html><h1>Welcome to Apache web server on amazon linux!<h1><html>" > var/www/html/index.html
+                                echo "<html><h1>Welcome to Apache web server on amazon Ubuntu!<h1><html>" > var/www/html/index.html
                                 EOF
 
   associate_public_ip_address = true
@@ -114,7 +114,7 @@ resource "aws_autoscaling_group" "three-tier-app-asg" {
 # Create a launch configuration for the EC2 instances
 resource "aws_launch_configuration" "three-tier-app-lconfig" {
   name_prefix                 = "three-tier-app-lconfig"
-  image_id                    = "ami-0995922d49dc9a17d"
+  image_id                    = "ami-06650ca7ed78ff6fa"
   instance_type               = "t2.micro"
   key_name                    = "three-key"
   security_groups             = [aws_security_group.three-tier-ec2-asg-sg-app.id]

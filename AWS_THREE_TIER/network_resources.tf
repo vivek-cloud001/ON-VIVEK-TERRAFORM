@@ -84,7 +84,7 @@ resource "aws_launch_configuration" "three-tier-web-lconfig" {
   image_id                    = "ami-06650ca7ed78ff6fa"
   instance_type               = "t2.micro"
   key_name                    = "three-key"
-  security_groups             = [aws_security_group.three-tier-ec2-asg_sg.id]
+  security_groups             = [aws_security_group.my_sg.id]
   user_data                   = <<-EOF
                                 #!/bin/bash
                                 sudo yum -y update
@@ -117,7 +117,7 @@ resource "aws_launch_configuration" "three-tier-app-lconfig" {
   image_id                    = "ami-06650ca7ed78ff6fa"
   instance_type               = "t2.micro"
   key_name                    = "three-key"
-  security_groups             = [aws_security_group.three-tier-ec2-asg1_sg.id]
+  security_groups             = [aws_security_group.my_sg.id]
   user_data                   = <<-EOF
                                 #!/bin/bash
 
@@ -149,7 +149,7 @@ resource "aws_db_instance" "three-tier-db" {
   password                    = "password"
   parameter_group_name        = "default.mysql8.0"
   db_subnet_group_name        = aws_db_subnet_group.three-tier-db-sub-grp.name
-  vpc_security_group_ids      = ["${aws_security_group.three-tier-db_sg.id}"]
+  vpc_security_group_ids      = ["${aws_security_group.my_sg.id}"]
   multi_az                    = true
   skip_final_snapshot         = true
   publicly_accessible          = false

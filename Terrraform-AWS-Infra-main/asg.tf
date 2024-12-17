@@ -1,7 +1,7 @@
 # ASG for Presentation Tier
 resource "aws_launch_template" "auto-scaling-group" {
   name_prefix   = "auto-scaling-group"
-  image_id      = "ami-0440d3b780d96b29d"
+  image_id      = "ami-0e2c8caa4b6378d8c"
   instance_type = "t2.micro"
   user_data     = filebase64("install-apache.sh")
   key_name      = "dempkp"
@@ -26,7 +26,7 @@ resource "aws_autoscaling_group" "asg-1" {
 # ASG for Application Tier
 resource "aws_launch_template" "auto-scaling-group-private" {
   name_prefix   = "auto-scaling-group-private"
-  image_id      = "ami-0440d3b780d96b29d"
+  image_id      = "ami-0e2c8caa4b6378d8c"
   instance_type = "t2.micro"
   user_data     = filebase64("install-apache.sh")
   key_name      = "dempkp"

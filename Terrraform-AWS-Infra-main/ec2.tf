@@ -1,6 +1,6 @@
 # Ec2 Instance Web Tier
 resource "aws_instance" "PublicWebTemplate" {
-  ami                    = "ami-0440d3b780d96b29d"
+  ami                    = "ami-0e2c8caa4b6378d8c"
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public-subnet-1.id
   key_name               = "dempkp"
@@ -14,7 +14,7 @@ resource "aws_instance" "PublicWebTemplate" {
 
 # Ec2 instance Application Tier
 resource "aws_instance" "PrivateWebTemplate" {
-  ami                    = "ami-0440d3b780d96b29d"
+  ami                    = "ami-0e2c8caa4b6378d8c"
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public-subnet-1.id
   key_name               = "dempkp"

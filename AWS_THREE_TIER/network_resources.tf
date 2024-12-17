@@ -159,27 +159,3 @@ resource "aws_db_instance" "three-tier-db" {
     ignore_changes  = all
   }
 }
-
-resource "aws_security_group" "three-tier-ec2-asg_sg" {
-  # Security group configuration
-}
-
-resource "aws_security_group" "three-tier-ec2-asg_sg" {
-  name        = "three-tier-ec2-asg-sg"
-  description = "Security group for the EC2 Auto Scaling group in the three-tier architecture"
-  vpc_id      = "<your-vpc-id>"
-
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}

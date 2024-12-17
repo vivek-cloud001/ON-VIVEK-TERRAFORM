@@ -4,7 +4,7 @@ resource "aws_lb" "three-tier-web-lb" {
   internal           = true
   load_balancer_type = "application"
   
-  security_groups    = [aws_security_group.three-tier-alb-sg-1.id]
+  security_groups    = [aws_security_group.three-tier-alb_sg.id]
   subnets            = [aws_subnet.three-tier-pub-sub-1.id, aws_subnet.three-tier-pub-sub-2.id]
 
   tags = {
